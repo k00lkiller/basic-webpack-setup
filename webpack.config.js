@@ -10,14 +10,14 @@ module.exports = {
 		path: path.resolve(__dirname, 'build'),
 		assetModuleFilename: 'images/[name][ext][query]'
 	},
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'build'),
-    },
-    hot: true,
-    compress: true,
-    port: 9000,
-  },
+	devServer: {
+		static: {
+			directory: path.join(__dirname, 'build')
+		},
+		hot: true,
+		compress: true,
+		port: 9000
+	},
 	plugins: [
 		new HTMLWebpackPlugin({
 			template: './src/index.html'
@@ -37,6 +37,16 @@ module.exports = {
 			{
 				test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
 				type: 'asset/resource'
+			},
+			{
+				test: /\.m?js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env']
+					}
+				}
 			}
 		]
 	}
