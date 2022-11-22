@@ -6,4 +6,6 @@ body {
 }
 body h1 {
   color: whitesmoke;
+  border-top: 2px solid black;
+  padding: 2em 4em;
 }
